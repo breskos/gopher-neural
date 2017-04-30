@@ -4,7 +4,9 @@ gopher-neural
 
 # Quickstart
 * See examples here: https://github.com/flezzfx/gopher-neural/tree/master/examples
-* Roadmap current version 1.0: https://github.com/flezzfx/gopher-neural/projects/1
+* [**Closed**] Roadmap current version 1.0: https://github.com/flezzfx/gopher-neural/projects/1
+* Roadmap current version 1.1: https://github.com/flezzfx/gopher-neural/projects/2
+* Visions, feature ideas and adjustments: https://github.com/flezzfx/gopher-neural/projects/3
 
 # Preface
 This code was partly taken from github.com/NOX73/go-neural. For the implementation of the core algorithm all credits belong to NOX73. The fork to gopher-neural was made to pursue the following goals:
