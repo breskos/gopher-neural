@@ -2,8 +2,7 @@
 
 ![gopher-neural-logo](http://alexander.bre.sk/x/gopher-neural-small.png " The Gopher Neural logo ")
 
-This repository provides examples to gopher-neural. You can find the code here: https://github.com/flezzfx/gopher-neural
-
+This repository provides examples to gopher-neural. You can find the code here: https://github.com/breskos/gopher-neural
 
 ## Sonar
 

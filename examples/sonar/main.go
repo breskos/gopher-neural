@@ -3,10 +3,10 @@ package main
 import (
 	"fmt"
 
-	"github.com/flezzfx/gopher-neural"
-	"github.com/flezzfx/gopher-neural/engine"
-	"github.com/flezzfx/gopher-neural/learn"
-	"github.com/flezzfx/gopher-neural/persist"
+	neural "github.com/breskos/gopher-neural"
+	"github.com/breskos/gopher-neural/engine"
+	"github.com/breskos/gopher-neural/learn"
+	"github.com/breskos/gopher-neural/persist"
 )
 
 const (

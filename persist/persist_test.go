@@ -1,9 +1,10 @@
 package persist
 
 import (
-	"github.com/flezzfx/gopher-neural"
-	. "launchpad.net/gocheck"
 	"testing"
+
+	neural "github.com/breskos/gopher-neural"
+	. "launchpad.net/gocheck"
 )
 
 func Test(t *testing.T) { TestingT(t) }

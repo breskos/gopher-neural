@@ -17,18 +17,18 @@ test_engine:
 
 goget:
 	@( \
-		go get github.com/flezzfx/gopher-neural; \
-		go get github.com/flezzfx/gopher-neural/persist; \
-		go get github.com/flezzfx/gopher-neural/learn; \
-		go get github.com/flezzfx/gopher-neural/engine; \
-		go get github.com/flezzfx/gopher-neural/evaluation; \
+		go get github.com/breskos/gopher-neural; \
+		go get github.com/breskos/gopher-neural/persist; \
+		go get github.com/breskos/gopher-neural/learn; \
+		go get github.com/breskos/gopher-neural/engine; \
+		go get github.com/breskos/gopher-neural/evaluation; \
 	)
 
 gogetu:
 	@( \
-		go get github.com/flezzfx/gopher-neural; \
-		go get github.com/flezzfx/gopher-neural/persist; \
-		go get github.com/flezzfx/gopher-neural/learn; \
-		go get github.com/flezzfx/gopher-neural/engine; \
-		go get github.com/flezzfx/gopher-neural/evaluation; \
+		go get github.com/breskos/gopher-neural; \
+		go get github.com/breskos/gopher-neural/persist; \
+		go get github.com/breskos/gopher-neural/learn; \
+		go get github.com/breskos/gopher-neural/engine; \
+		go get github.com/breskos/gopher-neural/evaluation; \
 	)

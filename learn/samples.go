@@ -12,7 +12,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/flezzfx/gopher-neural"
+	neural "github.com/breskos/gopher-neural"
 )
 
 const (

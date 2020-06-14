@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"math"
 
-	neural "github.com/flezzfx/gopher-neural"
+	neural "github.com/breskos/gopher-neural"
 )
 
 // TODO (abresk) write tests for evaluation

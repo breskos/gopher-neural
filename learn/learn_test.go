@@ -4,7 +4,7 @@ import (
 	"math/rand"
 	"testing"
 
-	"github.com/flezzfx/gopher-neural"
+	neural "github.com/breskos/gopher-neural"
 	. "launchpad.net/gocheck"
 )
 
