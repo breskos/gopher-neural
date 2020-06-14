@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"math/rand"
 
-	neural "github.com/flezzfx/gopher-neural"
-	"github.com/flezzfx/gopher-neural/evaluation"
-	"github.com/flezzfx/gopher-neural/learn"
-	"github.com/flezzfx/gopher-neural/persist"
+	neural "github.com/breskos/gopher-neural"
+	"github.com/breskos/gopher-neural/evaluation"
+	"github.com/breskos/gopher-neural/learn"
+	"github.com/breskos/gopher-neural/persist"
 )
 
 const (

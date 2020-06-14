@@ -1,72 +1,83 @@
-gopher-neural
-==============
+# gopher-neural
+
 ![gopher-neural-logo](http://alexander.bre.sk/x/gopher-neural-small.png " The Gopher Neural logo ")
 
 # Quickstart
-* See examples here: https://github.com/flezzfx/gopher-neural/tree/master/examples
-* [**Closed**] Roadmap current version 1.0: https://github.com/flezzfx/gopher-neural/projects/1
-* Roadmap current version 1.1: https://github.com/flezzfx/gopher-neural/projects/2
-* Visions, feature ideas and adjustments: https://github.com/flezzfx/gopher-neural/projects/3
+
+- See examples here: https://github.com/breskos/gopher-neural/tree/master/examples
+- [**Closed**] Roadmap current version 1.0: https://github.com/breskos/gopher-neural/projects/1
+- Roadmap current version 1.1: https://github.com/breskos/gopher-neural/projects/2
+- Visions, feature ideas and adjustments: https://github.com/breskos/gopher-neural/projects/3
 
 # Preface
+
 This code was partly taken from github.com/NOX73/go-neural. For the implementation of the core algorithm all credits belong to NOX73. The fork to gopher-neural was made to pursue the following goals:
-* Build a training / testing framework around this algorithm
-* Build rich measurement mechanisms to control the training
-* Improved I/O functionality for training
-* Provide examples for the usage of the library
+
+- Build a training / testing framework around this algorithm
+- Build rich measurement mechanisms to control the training
+- Improved I/O functionality for training
+- Provide examples for the usage of the library
 
 ### Done so far
-* Changed I/O handling for JSON models
-* Added Sample and Set structure for handling of data sets
-* Implement rich measurements for the evaluation of the classifier
-* Simple data I/O for training / testing and libSVM and csv format
-* Added labels to output neurons in network and persist
-* Just output label of neuron with most confidence
-* Establish a learning framework as engine package (using epochs, decays, interraters)
-* Provide another repository using example projects including data
-* Confusion matrix handling
-* Implement rich measurements for the evaluation of regressors
+
+- Changed I/O handling for JSON models
+- Added Sample and Set structure for handling of data sets
+- Implement rich measurements for the evaluation of the classifier
+- Simple data I/O for training / testing and libSVM and csv format
+- Added labels to output neurons in network and persist
+- Just output label of neuron with most confidence
+- Establish a learning framework as engine package (using epochs, decays, interraters)
+- Provide another repository using example projects including data
+- Confusion matrix handling
+- Implement rich measurements for the evaluation of regressors
 
 ### Roadmap
-* Improve the split data set handling by classes (for classification and regression)
-* Pipelined learning in channels to find the optimum
-* Online learning with online evaluation
-* Feature normalizer (auto encoder also for alphanumerical features)
 
+- Improve the split data set handling by classes (for classification and regression)
+- Pipelined learning in channels to find the optimum
+- Online learning with online evaluation
+- Feature normalizer (auto encoder also for alphanumerical features)
 
 # Install
+
 ```
-  go get github.com/flezzfx/gopher-neural
-  go get github.com/flezzfx/gopher-neural/persist
-  go get github.com/flezzfx/gopher-neural/learn
-  go get github.com/flezzfx/gopher-neural/engine
-  go get github.com/flezzfx/gopher-neural/evaluation
+  go get github.com/breskos/gopher-neural
+  go get github.com/breskos/gopher-neural/persist
+  go get github.com/breskos/gopher-neural/learn
+  go get github.com/breskos/gopher-neural/engine
+  go get github.com/breskos/gopher-neural/evaluation
 ```
 
 # gophers engine
-* number of #try (tries)
-  * learningRate minus decay if not 0 continue
-    * num of #epochs the network sees the training set
 
-* one epoch = one forward pass and one backward pass of all the training examples
+- number of #try (tries)
 
+  - learningRate minus decay if not 0 continue
+    - num of #epochs the network sees the training set
+
+- one epoch = one forward pass and one backward pass of all the training examples
 
 learningRate = <number>
 n x epoch
-	then learningRate - decay
+then learningRate - decay
 
-  epochs per learning-decay
+epochs per learning-decay
 
 ## Modes
+
 Gopher-neural can be used to perform classification and regression. This sections helps to set up both modes. In general, you have to take care about the differences between both modes during these parts: read training data from file, start engine, use evaluation modes and perform in production.
 
 ### Classification
+
 #### Read training data from file
+
 ```go
 data := learn.NewSet(neural.Classification)
 ok, err := data.LoadFromCSV(dataFile)
 ```
+
 #### Start engine
+
 ```go
 e := engine.NewEngine(neural.Classification, []int{hiddenNeurons}, data)
 e.SetVerbose(true)
@@ -74,6 +85,7 @@ e.Start(engine.CriterionDistance, tries, epochs, trainingSplit, learningRate, de
 ```
 
 #### Use evalation mode
+
 ```go
 evaluation.GetSummary("name of class1")
 evaluation.GetSummary("name of class2")
@@ -81,19 +93,24 @@ evaluation.PrintConfusionMatrix()
 ```
 
 #### Perform in production
+
 ```go
 x := net.CalculateWinnerLabel(vector)
 ```
 
 ### Regression
+
 Important note: Use regression just with a target value between 0 and 1.
 
 #### Read training data from file
+
 ```go
 data := learn.NewSet(neural.Regression)
 ok, err := data.LoadFromCSV(dataFile)
 ```
+
 #### Start engine
+
 ```go
 e := engine.NewEngine(neural.Regression, []int{hiddenNeurons}, data)
 e.SetVerbose(true)
@@ -101,23 +118,26 @@ e.Start(engine.CriterionDistance, tries, epochs, trainingSplit, learningRate, de
 ```
 
 #### Use evalation mode
+
 ```go
 evaluation.GetRegressionSummary()
 ```
 
 #### Perform in production
+
 ```go
 x := net.Calculate(vector)
 ```
 
 ## Criterions
+
 To let the engine decide for the best model, a few criterias were implemented. They are listed below together with a short regarding their application:
 
-* **CriterionAccuracy** - uses simple accuracy calculation to decide the best model. Not suitable with unbalanced data sets.
-* **CriterionBalancedAccuracy** - uses balanced accuracy. Suitable for unbalanced data sets.
-* **CriterionFMeasure** - uses F1 score. Suitable for unbalanced data sets.
-* **CriterionSimple** - uses simple correct classified divided by all classified samples. Suitable for regression with thresholding.
-* **CriterionDistance** - uses distance between ideal output and current output. Suitable for regression.
+- **CriterionAccuracy** - uses simple accuracy calculation to decide the best model. Not suitable with unbalanced data sets.
+- **CriterionBalancedAccuracy** - uses balanced accuracy. Suitable for unbalanced data sets.
+- **CriterionFMeasure** - uses F1 score. Suitable for unbalanced data sets.
+- **CriterionSimple** - uses simple correct classified divided by all classified samples. Suitable for regression with thresholding.
+- **CriterionDistance** - uses distance between ideal output and current output. Suitable for regression.
 
 ```go
 ...
@@ -126,18 +146,18 @@ e.Start(engine.CriterionDistance, tries, epochs, trainingSplit, learningRate, de
 ...
 ```
 
-
 # Some more basics
 
 ## Train a network using engine
+
 ```go
 import (
 	"fmt"
 
-	"github.com/flezzfx/gopher-neural"
-	"github.com/flezzfx/gopher-neural/engine"
-	"github.com/flezzfx/gopher-neural/learn"
-	"github.com/flezzfx/gopher-neural/persist"
+	"github.com/breskos/gopher-neural"
+	"github.com/breskos/gopher-neural/engine"
+	"github.com/breskos/gopher-neural/learn"
+	"github.com/breskos/gopher-neural/persist"
 )
 
 const (
@@ -183,12 +203,11 @@ func main() {
 
 ```
 
-
 ## Create simple network for classification
 
 ```go
 
-  import "github.com/flezzfx/gopher-neural"
+  import "github.com/breskos/gopher-neural"
   // Network has 9 enters and 3 layers
   // ( 9 neurons, 9 neurons and 2 neurons).
   // Last layer is network output (2 neurons).
@@ -209,6 +228,7 @@ func main() {
 # Further ideas
 
 ## Rename and batching in learning
-* Use term **batch** size = the number of training examples in one forward/backward pass.
-* Use term **iterations** = number of passes, each pass using [batch size] number of examples.
-* Random application of samples
+
+- Use term **batch** size = the number of training examples in one forward/backward pass.
+- Use term **iterations** = number of passes, each pass using [batch size] number of examples.
+- Random application of samples

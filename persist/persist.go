@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 	"strconv"
 
-	"github.com/flezzfx/gopher-neural"
+	neural "github.com/breskos/gopher-neural"
 )
 
 type Weights [][][]float64
