@@ -1,7 +1,7 @@
 # gopher-neural
 
 This project is deprecated.
-Development continues nder the new name __gopher-learn__ here: https://github.com/breskos/gopher-learn
+Development continues under the new name __gopher-learn__ here: https://github.com/breskos/gopher-learn
 
 # Gopher-Learn
 
